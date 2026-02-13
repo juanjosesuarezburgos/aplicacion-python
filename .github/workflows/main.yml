@@ -20,7 +20,7 @@ jobs:
       - name: 3. Instalar dependencias
         run: |
           pip install poetry
-          poetry install
+          poetry install --no-root
 
       - name: 4. Ejecutar suite de pruebas
         run: poetry run pytest
@@ -57,7 +57,7 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
 
   update-helm-repo:
-    name: 📝 Actualizar Repositorio Helm
+    name: Actualizar Repositorio Helm
     runs-on: ubuntu-latest
     needs: build-and-push 
 
