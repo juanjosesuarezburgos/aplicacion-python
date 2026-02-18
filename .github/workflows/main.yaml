@@ -1,0 +1,26 @@
+name: CI Básico - Pruebas Unitarias
+
+on:
+  push:
+    branches: [ "main" ] 
+  workflow_dispatch: 
+
+jobs:
+  test:
+    name: Ejecutar Pruebas
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 1. Checkout del Código
+        uses: actions/checkout@v4
+
+      - name: 2. Configurar Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: 3. Instalar Herramientas (pytest)
+        run: pip install pytest
+
+      - name: 4. Ejecutar Pruebas Unitarias
+        run: pytest
