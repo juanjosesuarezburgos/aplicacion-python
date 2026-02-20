@@ -2,7 +2,7 @@ name: CI Básico - Pruebas Unitarias
 
 on:
   push:
-    branches: [ "main" ] 
+    branches: [ "development" ] 
   workflow_dispatch: 
 
 jobs:
