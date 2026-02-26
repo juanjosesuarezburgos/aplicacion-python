@@ -3,6 +3,6 @@ WORKDIR /app
 RUN pip install poetry
 COPY pyproject.toml ./
 RUN pip install poetry
-RUN poetry install --no-dev --no-root
+RUN poetry install config virtualenvs.create false && poetry install --no-dev
 COPY . .
 CMD ["python", "app.py"]
