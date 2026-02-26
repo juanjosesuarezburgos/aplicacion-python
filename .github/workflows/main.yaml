@@ -38,7 +38,6 @@ jobs:
           username: ${{ github.actor }} 
           password: ${{ secrets.GITHUB_TOKEN }} 
 
-      # 3. Generar el Tag de la Imagen (ej: sha-abcdef)
       - name: 3. Generar metadatos de la imagen
         id: meta
         uses: docker/metadata-action@v5
