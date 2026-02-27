@@ -71,9 +71,9 @@ jobs:
 
       - name: 3. Actualizar el tag de la imagen en values.yaml
         run: |
-           yq e -i ".image.tag = \"${{ needs.build-and-push.outputs.image_tag }}\"" 
-           ./charts/aplicacion/values.yaml
-          echo "Helm chart actualizado para usar el tag: ${{ needs.build-and-push.outputs.image_tag }}"
+          export IMAGE_TAG=${{ needs.build-and-push.outputs.image_tag }}
+          yq e -i ".image.tag = \"$IMAGE_TAG\"" ./charts/aplicacion/values.yaml
+          echo "Helm chart actualizado para usar el tag: $IMAGE_TAG"
 
       - name: 4. Hacer commit y subir los cambios de configuración
         run: |
