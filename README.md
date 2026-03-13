@@ -1,46 +1,42 @@
 # aplicacion-python
 
 <div align="center">
-  <h1> Python Pipeline Skeleton</h1>
-  <p><strong>Standardized Source Code & CI/CD Structure for GitHub Actions & GitOps</strong></p>
+  <h1> Python Application Repository</h1>
+  <p><strong>Source Code & CI/CD Pipeline Foundation</strong></p>
 </div>
 
 <hr />
 
-## Project Overview
-This repository contains the core source code for a Python application and a pre-configured <b>CI/CD Pipeline</b>[cite: 3]. The pipeline automates testing, Docker image construction, and configuration updates for <b>GitOps deployment</b> via ArgoCD[cite: 4, 40].
+##  Project Overview
+This repository contains the source code for our Python application and the associated <b>CI/CD Pipeline</b> defined in GitHub Actions. The pipeline automates testing, Docker image building, and configuration updates for GitOps deployment.
 
-### Deployment Flow
-The automation follows a sequential logic triggered by pushes to the <code>development</code> branch[cite: 6, 7]:
+###  Deployment Flow (CI/CD)
+The process is triggered by a push to the designated branch (<code>development</code> in this setup):
 <p align="center">
-  <b>Push to Development</b> → <b>CI Test</b> → <b>CD Build Docker</b> → <b>CD Update Helm</b> → <b>ArgoCD Deployment</b> [cite: 7]
+  <b>Push to 'development'</b> → <b>CITest</b> → <b>CDBuild Docker</b> → <b>CDUpdate Helm</b> → <b>ArgoCD Deployment</b>
 </p>
 
 ---
 
-## MANDATORY: Customization for New Services
-When reusing this structure for a new implementation, you <b>MUST</b> update these sections in <code>.github/workflows/main.yml</code>:
+##  Points of Customization for Future Use
+When reusing this pipeline for a new service, you <b>MUST</b> update the following sections in <code>.github/workflows/main.yml</code>:
 
 <table>
   <tr>
-    <th>Target Area</th>
-    <th>Adjustment Required</th>
+    <th>Section</th>
+    <th>Required Change</th>
   </tr>
   <tr>
     <td><b>Trigger Branch</b></td>
-    <td>In the <code>on:</code> section, change <code>development</code> to your new target branch[cite: 33].</td>
+    <td>In the <code>on:</code> section, change <code>development</code> to the target branch for the new service.</td>
   </tr>
   <tr>
-    <td><b>Image Path</b></td>
-    <td>Update <code>images:</code> in the <code>build-and-push</code> job to reflect your new GHCR path: <br><code>ghcr.io/your-username/new-service-name/app-name</code>[cite: 34, 35].</td>
+    <td><b>build-and-push (Step 3)</b></td>
+    <td>Update the <code>images:</code> path to reflect the new image name in GHCR: <br><code>ghcr.io/your-username/new-service-name/app-name</code></td>
   </tr>
   <tr>
-    <td><b>Helm Repository</b></td>
-    <td>Update the <code>repository:</code> field in the <code>update-helm-repo</code> job[cite: 36, 37].</td>
-  </tr>
-  <tr>
-    <td><b>Manifest Path</b></td>
-    <td>Update the <code>yq</code> command path to point to the correct <code>values.yaml</code> file in your Helm repo[cite: 38].</td>
+    <td><b>update-helm-repo (Step 1 & 3)</b></td>
+    <td>Update the <code>repository:</code> to point to the correct Helm chart repository and update the <code>yq</code> command path to point to the correct <code>values.yaml</code> file.</td>
   </tr>
 </table>
 
@@ -49,33 +45,18 @@ When reusing this structure for a new implementation, you <b>MUST</b> update the
 ##  Repository Structure
 | File/Folder | Purpose |
 | :--- | :--- |
-| <b>app.py</b> | Main application source code[cite: 9]. |
-| <b>test_app.py</b> | Unit tests (must pass for the pipeline to continue)[cite: 9]. |
-| <b>requirements.txt</b> | Python dependencies for app and testing[cite: 9]. |
-| <b>Dockerfile</b> | Instructions for building the container image[cite: 9]. |
-| <b>.github/workflows/</b> | The complete CI/CD Pipeline definition (main.yml)[cite: 9]. |
+| <b>app.py</b> | Main application source code. |
+| <b>test_app.py</b> | Unit tests that must pass for the pipeline to continue. |
+| <b>requirements.txt</b> | List of Python dependencies needed for the app and tests. |
+| <b>Dockerfile</b> | Instructions for building the application's Docker image. |
+| <b>.github/workflows/main.yml</b> | The complete CI/CD Pipeline definition. |
 
 ---
 
-##  Developer Guide (How to Contribute)
-1. <b>Clone:</b> <code>git clone https://github.com/juanjosesuarezburgos/aplicacion-python.git</code>[cite: 13].
-2. <b>Branching:</b> Create a feature branch (e.g., <code>feature/my-new-feature</code>)[cite: 16]. 
-   * <i>Note: The pipeline triggers only on pushes to <code>development</code>[cite: 17]. Use Pull Requests to merge feature work[cite: 18].</i>
-3. <b>Local Testing:</b> 
-   * Install: <code>pip install -r requirements.txt</code>[cite: 20].
-   * Run: <code>pytest</code>[cite: 21].
-4. <b>Submit:</b> Push your branch and open a PR[cite: 25, 26]. The pipeline will run automatically on the PR[cite: 27].
+##  Guide for Developers (How to Contribute)
+To contribute new features or fixes, follow these steps:
 
----
-
-##  Pipeline Details (Jobs)
-The <code>main.yml</code> file uses <code>needs:</code> to ensure sequential execution[cite: 29]:
-* <b>test:</b> Runs unit tests[cite: 30].
-* <b>build-and-push:</b> Builds and pushes the image to GHCR (Depends on <code>test</code>)[cite: 30].
-* <b>update-helm-repo:</b> Updates the version tag in the Helm repository (Depends on <code>build-and-push</code>)[cite: 30].
-
-<hr />
-
-<div align="center">
-  <sub>Managed via <b>ArgoCD (GitOps)</b> — The Helm repository is the Source of Truth[cite: 40].</sub>
-</div>
+1. <b>Clone the Repository:</b>
+   ```bash
+   git clone [https://github.com/juanjosesuarezburgos/aplicacion-python.git](https://github.com/juanjosesuarezburgos/aplicacion-python.git)
+   cd aplicacion-python
