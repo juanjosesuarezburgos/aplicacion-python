@@ -1,5 +1,3 @@
-# aplicacion-python
-
 <div align="center">
   <h1> Python Application Repository</h1>
   <p><strong>Source Code & CI/CD Pipeline Foundation</strong></p>
