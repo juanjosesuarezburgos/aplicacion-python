@@ -5,10 +5,10 @@
 
 <hr />
 
-##  Project Overview
+## Project Overview
 This repository contains the source code for our Python application and the associated <b>CI/CD Pipeline</b> defined in GitHub Actions. The pipeline automates testing, Docker image building, and configuration updates for GitOps deployment.
 
-###  Deployment Flow (CI/CD)
+### Deployment Flow (CI/CD)
 The process is triggered by a push to the designated branch (<code>main</code> in this setup):
 <p align="center">
   <b>Push to 'main'</b> → <b>CITest</b> → <b>CDBuild Docker</b> → <b>CDUpdate Helm</b> → <b>ArgoCD Deployment</b>
@@ -16,7 +16,7 @@ The process is triggered by a push to the designated branch (<code>main</code> i
 
 ---
 
-##  Points of Customization for Future Use
+## Points of Customization for Future Use
 When reusing this pipeline for a new service, you <b>MUST</b> update the following sections in <code>.github/workflows/main.yml</code>:
 
 <table>
@@ -40,7 +40,7 @@ When reusing this pipeline for a new service, you <b>MUST</b> update the followi
 
 ---
 
-##  Repository Structure
+## Repository Structure
 | File/Folder | Purpose |
 | :--- | :--- |
 | <b>app.py</b> | Main application source code. |
@@ -51,7 +51,7 @@ When reusing this pipeline for a new service, you <b>MUST</b> update the followi
 
 ---
 
-##  Guide for Developers (How to Contribute)
+## Guide for Developers (How to Contribute)
 To contribute new features or fixes, follow these steps:
 
 1. <b>Clone the Repository:</b>
