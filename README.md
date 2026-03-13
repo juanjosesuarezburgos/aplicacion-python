@@ -13,7 +13,7 @@ This repository contains the source code for our Python application and the asso
 ###  Deployment Flow (CI/CD)
 The process is triggered by a push to the designated branch (<code>main</code> in this setup):
 <p align="center">
-  <b>Push to 'development'</b> → <b>CITest</b> → <b>CDBuild Docker</b> → <b>CDUpdate Helm</b> → <b>ArgoCD Deployment</b>
+  <b>Push to 'main'</b> → <b>CITest</b> → <b>CDBuild Docker</b> → <b>CDUpdate Helm</b> → <b>ArgoCD Deployment</b>
 </p>
 
 ---
