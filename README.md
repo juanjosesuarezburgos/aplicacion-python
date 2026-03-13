@@ -11,7 +11,7 @@
 This repository contains the source code for our Python application and the associated <b>CI/CD Pipeline</b> defined in GitHub Actions. The pipeline automates testing, Docker image building, and configuration updates for GitOps deployment.
 
 ###  Deployment Flow (CI/CD)
-The process is triggered by a push to the designated branch (<code>development</code> in this setup):
+The process is triggered by a push to the designated branch (<code>main</code> in this setup):
 <p align="center">
   <b>Push to 'development'</b> → <b>CITest</b> → <b>CDBuild Docker</b> → <b>CDUpdate Helm</b> → <b>ArgoCD Deployment</b>
 </p>
@@ -28,7 +28,7 @@ When reusing this pipeline for a new service, you <b>MUST</b> update the followi
   </tr>
   <tr>
     <td><b>Trigger Branch</b></td>
-    <td>In the <code>on:</code> section, change <code>development</code> to the target branch for the new service.</td>
+    <td>In the <code>on:</code> section, change <code>main</code> to the target branch for the new service.</td>
   </tr>
   <tr>
     <td><b>build-and-push (Step 3)</b></td>
