@@ -3,7 +3,7 @@
 
 <hr />
 
-<div align="left">
+<div align="center">
   <h2>Project Overview</h2>
 </div>
 
